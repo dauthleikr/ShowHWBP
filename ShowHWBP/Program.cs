@@ -20,8 +20,10 @@
             do
             {
                 process = Process.GetProcesses().FirstOrDefault(proc => Matches(proc, args.First()));
-                Thread.Sleep(10);
+                Thread.Sleep(50);
+                Console.Clear();
                 Console.WriteLine($"No process by name or pid {args.First()}, waiting ...");
+                
             } while (process == null);
 
             Console.CursorVisible = false;
