@@ -28,7 +28,7 @@
 
             var lastReport = string.Empty;
             var thisReport = new StringBuilder();
-            while (true)
+            while (!process.HasExited)
             {
                 thisReport.AppendLine($"Watching process {process.ProcessName} ({process.Id})");
                 foreach (ProcessThread thread in process.Threads)
@@ -88,7 +88,6 @@
                 3 => "A",
                 _ => "?"
             };
-
             var len = ((dr7 >> (18 + registerIndex * 4)) & 3ul) switch
             {
                 0 => "1",
