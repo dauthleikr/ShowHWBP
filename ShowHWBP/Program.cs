@@ -88,7 +88,16 @@
                 3 => "A",
                 _ => "?"
             };
-            return $"{enabled} {kind}";
+
+            var len = ((dr7 >> (18 + registerIndex * 4)) & 3ul) switch
+            {
+                0 => "1",
+                1 => "2",
+                2 => "8",
+                3 => "4",
+                _ => "?"
+            };
+            return $"{enabled} {kind} {len}";
         }
 
         private static bool Matches(Process process, string filter)
