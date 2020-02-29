@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ShowHWBP": {
+      "commandName": "Project",
+      "commandLineArgs": "notepad"
+    }
+  }
+}
