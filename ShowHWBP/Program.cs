@@ -16,14 +16,12 @@
                 return;
             }
 
+            Console.WriteLine($"Waiting for process by name or pid {args.First()} ...");
             Process process;
             do
             {
                 process = Process.GetProcesses().FirstOrDefault(proc => Matches(proc, args.First()));
                 Thread.Sleep(50);
-                Console.Clear();
-                Console.WriteLine($"No process by name or pid {args.First()}, waiting ...");
-                
             } while (process == null);
 
             Console.CursorVisible = false;
@@ -32,7 +30,7 @@
             var thisReport = new StringBuilder();
             while (!process.HasExited)
             {
-                thisReport.AppendLine($"Watching process {process.ProcessName} ({process.Id})");
+                thisReport.AppendLine($"Watching process {process.ProcessName} ({process.Id} | {process.Id:X})");
                 foreach (ProcessThread thread in process.Threads)
                 {
                     thisReport.AppendLine($"Thread {thread.Id:X}");
